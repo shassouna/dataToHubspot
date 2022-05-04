@@ -1,6 +1,5 @@
 const fs = require('fs')
 const csv = require('csv-parser')
-const { Console } = require('console')
 //const fastcsv = require('fast-csv')
 
 
@@ -54,7 +53,6 @@ const readAllCsvsPromise = async (filesPaths) => {
     const data=await Promise.all(promises)
     const resData = []
     for (let i=0; i<data.length;i++){
-        console.log(filesPaths[i])
         resData[filesPaths[i].split('/')[2].split(".")[0]]=data[i]  
     }
     return resData
@@ -82,5 +80,19 @@ const getFilesPaths = (folderPath) => {
     return paths
 }
 
+const handle_CapitalLowerDrawnsix_Form = (message) => {
 
-module.exports= {readAllCsvsPromise, readAllCsvsIndexedPromise, arrayOfObjectsToObjectKayValue, getFilesPaths}
+    let arrayWords = message.split(" ")
+
+    let res = ""
+
+    arrayWords.forEach(word=>{
+    res = res+word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()+"-"
+    })
+
+    return res.slice(0, -1)
+}
+
+
+module.exports= {readAllCsvsPromise, readAllCsvsIndexedPromise, arrayOfObjectsToObjectKayValue, getFilesPaths, handle_CapitalLowerDrawnsix_Form}
+
