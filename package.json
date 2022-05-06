@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@hubspot/api-client": "^6.0.1-beta.6",
     "convert-array-to-csv": "^2.0.0",
     "csv-parser": "^3.0.0",
     "fast-csv": "^4.3.6",
